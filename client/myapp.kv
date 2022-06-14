@@ -1,0 +1,52 @@
+
+<ScatterTextWidget>:
+    # orientation: 'vertical'
+        # on_text: root.test_chk()
+        # size_hint: None, None
+    GridLayout:
+        id: Main
+        cols: 1
+        size: root.width * 0.8, root.height * 0.95
+        center: root.width / 2, root.height / 2
+        Label:
+            background_color: [1,1,0,1]
+            text: '[b]Sound Wawe[/b]'
+            markup: True
+        GridLayout:
+            row_default_height: 50
+            row_force_default: True
+            id: Entr
+            cols: 2
+            Label:
+                text: 'ip-address'
+            Label:
+                text: 'port'
+            TextInput:
+                id: ip_add
+                hint_text: '127.0.0.1'
+                text: '192.168.1.111'
+                multiline: False
+                size_hint: None, None
+                size: Entr.width * 0.8, Entr.height * 0.17
+            TextInput:
+                id: port_add
+                hint_text: '80'
+                text: '2408'
+                multiline: False
+                size_hint: None, None
+                size: Entr.width * 0.15, Entr.height * 0.17
+        GridLayout:
+            id: Bottom
+            cols: 1
+            Label:
+                id: full_address
+                text: 'http://'+ip_add.text+':'+port_add.text+'/radio'
+                color: [0,0,1,1]
+            Button:
+                text: 'Connect'
+                background_color: [1,1,0,1]
+                # on_press: self.background_color = (0, 0, 0, 1)
+                on_press: root.connections()
+                on_release: self.background_color = (1, 0, 0, 1)
+                size_hint: None, None
+                size: Bottom.width * 1, Bottom.height * 0.2
